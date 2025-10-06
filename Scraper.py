@@ -9,7 +9,7 @@ from tqdm import tqdm
 def clean_text(text):
     # Loại bỏ ký tự không hiển thị và thay thế ký tự lạ
     text = text.encode("utf-8", "ignore").decode("utf-8")
-    text = re.sub(r"[\r\n\t]+", " ", text)  # bỏ dòng và tab
+    text = re.sub(r"[\r\n\t]+", " ", text)  
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -33,7 +33,7 @@ def scrape_guardian_api(max_articles=100, delay=1.0, api_key="--apikey 144e2ad7-
 
         results = data.get("response", {}).get("results", [])
         if not results:
-            print("❌ No more results found.")
+            print("No  results found.")
             break
 
         for item in results:
@@ -68,7 +68,7 @@ def scrape_guardian_api(max_articles=100, delay=1.0, api_key="--apikey 144e2ad7-
         writer.writeheader()
         writer.writerows(articles)
 
-    print(f"✅ Saved {len(articles)} articles -> articles.jsonl, articles.csv")
+    print(f"Saved {len(articles)} articles -> articles.jsonl, articles.csv")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
